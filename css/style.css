@@ -15,6 +15,14 @@
   box-sizing: border-box;
 }
 
+label {
+  font-weight: 600;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
 input {
   box-sizing: border-box;
   -webkit-appearance: none;
@@ -27,6 +35,7 @@ input {
   padding: 16px;
   padding-right: 40px;
   font-size: 1.5rem;
+  margin-bottom: 18px;
 }
 
 body {
@@ -213,19 +222,17 @@ header .overlay h1 small {
   display: block;
 }
 
-
 .collapsed .accordionList .accordionElement:not(.active),
-.collapsed h2{
+.collapsed h2 {
   height: 0;
   overflow: hidden;
   border: none;
 }
 
-.accordionList .accordionElement:not(.active){
+.accordionList .accordionElement:not(.active) {
   height: 42.72px;
   transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
-
 
 /* Modal */
 .modalOverlay {
@@ -242,7 +249,7 @@ header .overlay h1 small {
   z-index: 2;
 }
 
-.modalOverlay.active{
+.modalOverlay.active {
   display: flex;
 }
 
