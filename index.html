@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Arkade 5 Mockup</title>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,600,700&display=swap" rel="stylesheet">
+  <link href="css/fontawesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <nav class="navigationBar">
+    <span class="menuButton">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="menuIcon" focusable="false" role="presentation">
+        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+      </svg>
+    </span>
+  </nav>
+  <div id="downloadDialog" class="modalOverlay">
+    <div class="modalContent">
+      <form>
+        <input id="downloadDialogApplicationType" type="hidden" />
+        <label>Navn</label>
+        <input />
+        <label>Epost</label>
+        <input />
+        <button onclick="hideDownloadDialog()"><span>Avbryt</span></button>
+        <button id="downloadDialog"><span>Last ned</span></button>
+      </form>
+    </div>
+  </div>
+  <div class="appContainer">
+    <header>
+      <picture>
+        <img src="mockuper.png" />
+      </picture>
+      <div class="overlay">
+        <div class="contentContainer">
+        <h1>
+          Arkade 5
+          <small>testverktøy for arkivuttrekk</small>
+        </h1>
+        <p>
+          Arkade tester arkivuttrekk, produserer testrapporter og «pakker inn» data basert på gjeldende arkivstandarder for metadata.
+        </p>
+        <p>
+          Testing av data baserer seg primært på Arkivverkets standard ADDML for beskrivelse av datastrukturer.
+        </p>
+        <button class="big" onclick="showDownloadDialog('windows')">
+          <span>
+            <i class="fab fa-windows fa-lg"></i> Last ned Arkade 5 for Windows
+          </span>
+        </button>
+        <button class="big" onclick="showDownloadDialog('cli')">
+          <span>
+            <i class="fas fa-terminal fa-lg"></i> Last ned Arkade 5 CLI
+          </span>
+        </button>
+        </div>
+      </div>
+    </header>
+    <div class="">
+      <div class="contentContainer">
+        <h2>Om Arkade 5</h2>
+        <p>Arkade er en frittstående applikasjon som fritt kan lastes ned og enkelt installeres av alle. Programmet er svært enkelt i bruk.</p>
+        <p>I prosjektfasen er det hentet innspill, kommentarer og idéer fra både kommunal og statlig sektor. Ved å senke
+          terskelen for bruk av testverktøy håper vi å forenkle prosessene både hos arkivskapere og arkivinstitusjoner. Blant annet vil feil og avvik kunne oppdages mye tidligere, noe som sparer både tid og kostnader for alle involverte.</p>
+        <p>All kildekode
+          og funksjonalitet i Arkade er lagt ut som åpen kildekode, så det vil også være mulig for eksterne å lage spesialtilpasninger.</p>
+      </div>
+    </div>
+    <div class="muted-background">
+      <div class="contentContainer">
+        <h2>Siste versjon</h2>
+        <div id="latestRelease">
+        </div>
+        <div id="previousReleasesListContainer" class="collapsed">
+          <h2>Tidligere versjoner</h2>
+          <div id="previousReleasesList" class="previousReleasesList">
+          </div>
+        </div>
+        <button id="showPreviousReleasesButton" onclick="showPreviousReleases()">
+          <span>Se tidligere versjoner</span>
+        </button>
+        <button id="hidePreviousReleasesButton" onclick="hidePreviousReleases()" class="hidden">
+          <span>Skjul tidligere versjoner</span>
+        </button>
+      </div>
+    </div>
+    <div class="dark-background">
+      <div class="contentContainer">
+        <h2>Veiledning</h2>
+        <img src="video-player.png" class="contentImage" />
+        <div class="section">
+          <h3>Installer .NET</h3>
+          <p>For å kjøre Arkade 5 må .NET Framework (minimum versjon 4.7.2) være installert.</p>
+          <p><a href="https://dotnet.microsoft.com/download" target="_blank">Last ned siste versjon av .NET Framework runtime</a></p>
+        </div>
+        <div class="section">
+          <h3>Installer Arkade 5</h3>
+          <p><a class="reference external" href="https://github.com/arkivverket/arkade5/releases/latest">Last ned siste versjon av Arkade 5</a> - Velg filen Arkade5-&lt;versjon&gt;.msi</p>
+          <p>Start installasjonen ved å dobbeltklikke den nedlastede msi-filen.</p>
+          <p><strong>Merk: Windows Smart Screen advarsel</strong>
+            Den følgende advarselen vil vises om Windows-maskinen har «Windows Smart Screen» satt på (Windows 10).</p>
+          <ul class="simple">
+            <li>Klikk på «Mer info»</li>
+            <li>Klikk «Kjør likevel»</li>
+          </ul>
+          <p><strong>Følg installasjonsveiviseren og aksepter alle de foreslåtte installasjonsvalgene.</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <footer class="dark-background">
+      <div class="contentContainer">
+        © Copyright 2020, Arkivverket
+      </div>
+    </footer>
+  </div>
+  <script src="scripts/markdown-it.min.js"></script>
+  <script src="scripts/gitHubApiService.js"></script>
+  <script src="scripts/functions.js"></script>
+  <script src="scripts/init.js"></script>
+</body>
+
+</html>
