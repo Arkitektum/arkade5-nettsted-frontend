@@ -21,12 +21,14 @@
     <div class="modalContent">
       <form>
         <input id="downloadDialogApplicationType" type="hidden" />
-        <label>Navn</label>
-        <input />
+        <label>Organisasjon</label>
+        <input placeholder="Søk etter organisasjon" />
         <label>Epost</label>
-        <input />
-        <button onclick="hideDownloadDialog()"><span>Avbryt</span></button>
-        <button id="downloadDialog"><span>Last ned</span></button>
+        <input placeholder="navn@domene.no"/>
+        <div class="buttonRow alignRight">
+          <button onclick="hideDownloadDialog()"><span>Avbryt</span></button>
+          <button id="downloadDialog" disabled><span>Last ned</span></button>
+        </div>
       </form>
     </div>
   </div>
@@ -44,17 +46,17 @@
         <p>
           Arkade sørger for at arkivuttrekk fra NOARK- eller fagsystemer er iht. til gjeldende arkivstandarder, hjelper deg som arkivskaper med å rette avvik, opprette metadata og produsere ferdige arkivpakker klar til avlevering.
         </p>
-        <button class="big" onclick="showDownloadDialog('windows')">
+        <button onclick="showDownloadDialog('windows')">
           <span>
             <i class="fab fa-windows fa-lg"></i> Last ned Arkade 5 for Windows
           </span>
         </button>
-        <button class="big" onclick="showDownloadDialog('cli')">
+        <button onclick="showDownloadDialog('cli')">
           <span>
             <i class="fas fa-terminal fa-lg"></i> Last ned Arkade 5 CLI
           </span>
         </button>
-        <a href="http://arkade.arkivverket.no" title="Brukerveiledning for Arkade 5" target="_blank" rel="noopener noreferrer" class="button big primary-background" onclick="showDownloadDialog('cli')">
+        <a href="http://arkade.arkivverket.no" title="Brukerveiledning for Arkade 5" target="_blank" rel="noopener noreferrer" class="button primary-background" onclick="showDownloadDialog('cli')">
           <span>
             <i class="fas fa-book fa-lg"></i> Brukerveiledning
           </span>
@@ -82,7 +84,7 @@
         <h2>Veiledning</h2>
         <img src="assets/images/Arkade-lyndemo.gif" class="contentImage"/>
         <div class="section">
-        
+
         </div>
         <div class="section">
 
