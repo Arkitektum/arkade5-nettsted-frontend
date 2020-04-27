@@ -62,15 +62,17 @@
         </div>
       </div>
     </header>
-    <div class="">
+
+    <div>
       <div class="contentContainer">
-        <h2>Om Arkade 5</h2>
-        <p>Arkade er en frittstående applikasjon som fritt kan lastes ned og enkelt installeres av alle. Programmet er svært enkelt i bruk.</p>
-        <p>I prosjektfasen er det hentet innspill, kommentarer og idéer fra både kommunal og statlig sektor. Ved å senke
-          terskelen for bruk av testverktøy håper vi å forenkle prosessene både hos arkivskapere og arkivinstitusjoner. Blant annet vil feil og avvik kunne oppdages mye tidligere, noe som sparer både tid og kostnader for alle involverte.</p>
-        <p>All kildekode
-          og funksjonalitet i Arkade er lagt ut som åpen kildekode, så det vil også være mulig for eksterne å lage spesialtilpasninger.</p>
+        <h2>Endringslogg</h2>
+
+        <h3 onclick="toggleExpand('latestRelease', this)" class="expandToggle">Nytt i siste versjon</h3>
+        <div id="latestRelease" class="accordionList collapsed">
       </div>
+
+        <h3 onclick="toggleExpand('previousReleases', this)" class="expandToggle">Versjonshistorikk</h3>
+        <div id="previousReleases" class="accordionList collapsed">
     </div>
     <div class="muted-background">
       <div class="contentContainer">

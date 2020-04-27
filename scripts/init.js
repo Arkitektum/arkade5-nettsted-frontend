@@ -8,7 +8,7 @@ getReleases("arkivverket", "arkade5").then(releases => {
       containerElement.classList.add('accordionList');
       containerElement.appendChild(releaseElement);
     } else {
-      let containerElement = document.getElementById('previousReleasesList');
+      let containerElement = document.getElementById('previousReleases');
       let releaseElement = createReleaseElement(release, false);
       containerElement.classList.add('accordionList');
       containerElement.appendChild(releaseElement);

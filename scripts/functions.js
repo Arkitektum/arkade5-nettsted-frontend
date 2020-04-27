@@ -9,14 +9,10 @@ const createReleaseElement = (release, defaultExpanded) => {
   let releaseElement = document.createElement("DIV");
   releaseElement.setAttribute("id", release.id);
   releaseElement.setAttribute("class", 'accordionElement');
-  if (defaultExpanded) {
-    releaseElement.classList.toggle("active")
-  };
 
-  let releaseTitle = document.createElement("H3");
+  let releaseTitle = document.createElement("H4");
   releaseTitle.setAttribute("class", "accordionElementTitle");
   releaseTitle.innerHTML = release.name;
-  releaseTitle.setAttribute("onclick", `toggleActiveClass(${release.id})`);
 
   let releaseBody = document.createElement("DIV");
   releaseBody.setAttribute("class", "accordionElementBody");
@@ -47,22 +43,15 @@ const hideDownloadDialog = () => {
   modalElement.classList.remove("active");
 }
 
-const showPreviousReleases = () => {
-  const previousReleasesElement = document.getElementById("previousReleasesListContainer");
-  const showPreviousReleasesButtonElement = document.getElementById("showPreviousReleasesButton");
-  const hidePreviousReleasesButtonElement = document.getElementById("hidePreviousReleasesButton");
+const toggleExpand = (elementId, target) => {
+  console.log(target);
+  const element = document.getElementById(elementId);
 
-  previousReleasesElement.classList.remove("collapsed")
-  showPreviousReleasesButtonElement.classList.add("hidden")
-  hidePreviousReleasesButtonElement.classList.remove("hidden")
-}
-
-const hidePreviousReleases = () => {
-  const previousReleasesElement = document.getElementById("previousReleasesListContainer");
-  const showPreviousReleasesButtonElement = document.getElementById("showPreviousReleasesButton");
-  const hidePreviousReleasesButtonElement = document.getElementById("hidePreviousReleasesButton");
-
-  previousReleasesElement.classList.add("collapsed")
-  showPreviousReleasesButtonElement.classList.remove("hidden")
-  hidePreviousReleasesButtonElement.classList.add("hidden")
+  if (target.classList.contains('active')){
+    target.classList.remove('active');
+    element.classList.add('collapsed');
+  }else {
+    target.classList.add('active');
+    element.classList.remove('collapsed');
+  }
 }
