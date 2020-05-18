@@ -23,6 +23,11 @@ label {
   font-size: 18px;
 }
 
+label.required::after {
+  content: "*";
+  color: var(--link-color);
+}
+
 input {
   box-sizing: border-box;
   -webkit-appearance: none;
