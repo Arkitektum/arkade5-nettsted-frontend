@@ -1,5 +1,3 @@
-
-
 getReleases("arkivverket", "arkade5").then(releases => {
   releases.forEach((release, index) => {
     if (index === 0) {
@@ -14,9 +12,4 @@ getReleases("arkivverket", "arkade5").then(releases => {
       containerElement.appendChild(releaseElement);
     }
   });
-});
-
-getLatestRelease("arkivverket", "arkade5").then(latestRelease => {
-  const result = md.render(latestRelease.body);
-  document.getElementById('latestRelease-body').innerHTML = result;
 });
