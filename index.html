@@ -21,8 +21,12 @@
     <div class="modalContent">
       <form>
         <input id="downloadDialogApplicationType" type="hidden" />
+        <input id="organizationName" type="hidden" />
+        <input id="organizationNumber" type="hidden" />
         <label>Organisasjon</label>
-        <input placeholder="Søk etter organisasjon" />
+        <input id="organizationSearch" onkeyup="handleOrganizationSearchChange(event.target.value)" onblur="handleOrganizationSearchBlur()" placeholder="Søk etter organisasjon" />
+        <div id="organizationSearchResultsDropdown" class="searchResultsDropdown">
+        </div>
         <label>Epost</label>
         <input placeholder="navn@domene.no"/>
         <div class="buttonRow alignRight">
@@ -100,6 +104,7 @@
   </div>
   <script src="scripts/markdown-it.min.js"></script>
   <script src="scripts/gitHubApiService.js"></script>
+  <script src="scripts/brregApiService.js"></script>
   <script src="scripts/functions.js"></script>
   <script src="scripts/init.js"></script>
 </body>
