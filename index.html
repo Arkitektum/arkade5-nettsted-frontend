@@ -24,11 +24,11 @@
         <input id="organizationName" type="hidden" />
         <input id="organizationNumber" type="hidden" />
         <label>Organisasjon</label>
-        <input id="organizationSearch" onkeyup="handleOrganizationSearchChange(event.target.value)" onblur="handleOrganizationSearchBlur()" placeholder="Søk etter organisasjon" />
+        <input type="text" id="organizationSearch" onkeyup="handleOrganizationSearchChange(event.target.value)" onblur="handleOrganizationSearchBlur()" placeholder="Søk etter organisasjon" />
         <div id="organizationSearchResultsDropdown" class="searchResultsDropdown">
         </div>
         <label class="required">E-post</label>
-        <input placeholder="navn@domene.no"/>
+        <input type="email" placeholder="navn@domene.no"/>
         <div class="buttonRow alignRight">
           <button onclick="hideDownloadDialog()"><span>Avbryt</span></button>
           <button id="downloadDialog" disabled><span>Last ned</span></button>

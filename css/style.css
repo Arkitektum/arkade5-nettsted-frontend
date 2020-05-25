@@ -28,7 +28,9 @@ label.required::after {
   color: var(--link-color);
 }
 
-input {
+input[type='text'],
+input[type='email'],
+input[type='number'] {
   box-sizing: border-box;
   -webkit-appearance: none;
   -moz-appearance: none;
