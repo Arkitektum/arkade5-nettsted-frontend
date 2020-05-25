@@ -55,3 +55,28 @@ const toggleExpand = (elementId, target) => {
     element.classList.remove('collapsed');
   }
 }
+
+const valuesIsTrue = (value) => value === true;
+
+const validateEmailField = email => {
+  const regex = /(?:[æøåa-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[æøåa-z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[æøåa-z0-9](?:[æøåa-z0-9-]*[æøåa-z0-9])?\.)+[æøåa-z0-9](?:[æøåa-z0-9-]*[æøåa-z0-9])?)/gm;
+  return regex.exec(email) !== null;
+}
+
+validateForm = () => {
+  const userEmailField = document.getElementById("userEmail");
+  const userEmailValue = userEmailField.value;
+  const userEmailIsValid = validateEmailField(userEmailValue);
+
+  const fieldValidationStatuses = [userEmailIsValid];
+
+  const allFieldsAreValid = fieldValidationStatuses.every(valuesIsTrue);
+
+  const downloadDialogSubmitButton = document.getElementById("downloadDialogSubmit");
+
+  if (allFieldsAreValid) {
+    downloadDialogSubmitButton.disabled = false;
+  } else {
+    downloadDialogSubmitButton.disabled = true;
+  }
+}

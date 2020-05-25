@@ -28,10 +28,12 @@
         <div id="organizationSearchResultsDropdown" class="searchResultsDropdown">
         </div>
         <label class="required">E-post</label>
-        <input type="email" placeholder="navn@domene.no"/>
+        <input id="userEmail" type="email" placeholder="navn@domene.no" onkeyup="validateForm()"/>
+        <input id="subscribe" type="checkbox" />
+        <label for="subscribe">Jeg ønsker å bli informert om nyheter og forbedringer relatert til Arkade programvare</label>
         <div class="buttonRow alignRight">
           <button onclick="hideDownloadDialog()"><span>Avbryt</span></button>
-          <button id="downloadDialog" disabled><span>Last ned</span></button>
+          <button id="downloadDialogSubmit" disabled><span>Last ned</span></button>
         </div>
       </form>
     </div>

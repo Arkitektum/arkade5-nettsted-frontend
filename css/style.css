@@ -45,6 +45,32 @@ input[type='number'] {
   margin-bottom: 18px;
 }
 
+input[type='checkbox'] {
+  display: none;
+}
+
+input[type='checkbox'] + label {
+  display: flex;
+  align-items: center;
+}
+
+input[type='checkbox'] + label:before{
+  font-family: "Font Awesome 5 Free";
+  font-weight: 400;
+  font-size: 1.5em;
+  margin-right: 12px;
+  color: var(--main-text-color);
+  content: "\f0c8";
+}
+
+input[type='checkbox']:checked + label:before{
+  content: "\f14a";
+}
+
+.buttonRow {
+  margin-top: 24px;
+}
+
 body {
   margin: 0;
   font-family: "Source Sans Pro", sans-serif;
