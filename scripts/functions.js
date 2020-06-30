@@ -63,7 +63,7 @@ const validateEmailField = email => {
   return regex.exec(email) !== null;
 }
 
-validateForm = () => {
+const validateForm = () => {
   const userEmailField = document.getElementById("userEmail");
   const userEmailValue = userEmailField.value;
   const userEmailIsValid = validateEmailField(userEmailValue);
@@ -79,4 +79,25 @@ validateForm = () => {
   } else {
     downloadDialogSubmitButton.disabled = true;
   }
+}
+
+const handleDownloadDialogSubmit = () => {
+  const arkadeRelease = document.getElementById("downloadDialogApplicationType").value;
+  const userEmail = document.getElementById("userEmail").value;
+  const userA1Xp = document.getElementById("userA1Xp").checked;
+  const userNews = document.getElementById("userNews").checked;
+  const orgNumber = document.getElementById("organizationNumber").value;
+  const orgForm = document.getElementById("organizationType").value;
+  const orgAddress = document.getElementById("organizationAddress").value;
+
+  const postData = {
+  	"arkadeRelease": arkadeRelease === "windows" ? "1" : "2", // TODO get ID's
+  	userEmail,
+  	"userA1Xp": userA1Xp ? "1" : "0",
+  	"userNews": userNews ? "1" : "0",
+  	orgNumber,
+  	orgForm,
+  	orgAddress
+  };
+  console.log(postData);
 }
