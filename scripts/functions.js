@@ -80,7 +80,7 @@ const validateForm = () => {
   }
 }
 
-const handleDownloadDialogSubmit = () => {
+const handleDownloadDialogSubmit = postMethod => {
   const arkadeUI = document.getElementById("downloadDialogApplicationType").value;
   const downloaderEmail = document.getElementById("userEmail").value;
   const downloaderA1Xp = document.getElementById("userA1Xp").checked;
@@ -100,5 +100,5 @@ const handleDownloadDialogSubmit = () => {
   	orgForm,
   	orgAddress
   };
-  console.log(postData);
+  postMethod(postData)
 }
