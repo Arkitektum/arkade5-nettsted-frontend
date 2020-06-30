@@ -23,19 +23,27 @@
         <input id="downloadDialogApplicationType" type="hidden" />
         <input id="organizationName" type="hidden" />
         <input id="organizationNumber" type="hidden" />
-        <label>Organisasjon</label>
-        <input type="text" id="organizationSearch" onkeyup="handleOrganizationSearchChange(event.target.value)" onblur="handleOrganizationSearchBlur()" placeholder="Søk etter organisasjon" />
-        <div id="organizationSearchResultsDropdown" class="searchResultsDropdown">
-        </div>
-        <label class="required">E-post</label>
+        <input id="organizationType" type="hidden" />
+        <input id="organizationAddress" type="hidden" />
+
+        <label for="organizationSearch">Organisasjon</label>
+        <input type="search" type="text" autocomplete="off" id="organizationSearch" onkeyup="handleOrganizationSearchChange(event.target.value)" onblur="handleOrganizationSearchBlur()" onSearch="handleOrganizationOnSearch(event)" placeholder="Søk etter organisasjon" />
+        <div id="organizationSearchResultsDropdown" class="searchResultsDropdown"></div>
+
+        <label for="userEmail" class="required">E-post</label>
         <input id="userEmail" type="email" placeholder="navn@domene.no" onkeyup="validateForm()"/>
-        <input id="subscribe" type="checkbox" />
-        <label for="subscribe">Jeg ønsker å bli informert om nyheter og forbedringer relatert til Arkade programvare</label>
+
+        <input id="userA1Xp" type="checkbox" />
+        <label for="userA1Xp">Har tidligere Arkade-erfaring</label>
+
+        <input id="userNews" type="checkbox" />
+        <label for="userNews">Jeg ønsker å bli informert om nyheter og forbedringer relatert til Arkade programvare</label>
+      </form>
+
         <div class="buttonRow alignRight">
           <button onclick="hideDownloadDialog()"><span>Avbryt</span></button>
-          <button id="downloadDialogSubmit" disabled><span>Last ned</span></button>
+          <button onclick="handleDownloadDialogSubmit()" disabled id="downloadDialogSubmit"><span>Last ned</span></button>
         </div>
-      </form>
     </div>
   </div>
   <div class="appContainer">

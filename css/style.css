@@ -29,6 +29,7 @@ label.required::after {
 }
 
 input[type='text'],
+input[type='search'],
 input[type='email'],
 input[type='number'] {
   box-sizing: border-box;
