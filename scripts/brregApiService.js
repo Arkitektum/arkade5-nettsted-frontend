@@ -29,10 +29,21 @@ const clearSelectedOrganization = () => {
   document.getElementById('organizationNumber').value = "";
 }
 
+const getFullAddressFromOrganization = organization => {
+  const organizationAddress = organization.forretningsadresse && organization.forretningsadresse.adresse && organization.forretningsadresse.adresse[0] ? organization.forretningsadresse.adresse[0] : '';
+  const organizationZipCode = organization.forretningsadresse && organization.forretningsadresse.postnummer ? organization.forretningsadresse.postnummer : '';
+  const organizationPlace = organization.forretningsadresse && organization.forretningsadresse.poststed ? organization.forretningsadresse.poststed : '';
+  return `${organizationAddress} ${organizationZipCode} ${organizationPlace}`;
+}
+
 const selectOrganization = organization => {
   document.getElementById('organizationName').value = organization.navn;
   document.getElementById('organizationSearch').value = organization.navn;
   document.getElementById('organizationNumber').value = organization.organisasjonsnummer;
+  document.getElementById('organizationType').value = organization.organisasjonsform && organization.organisasjonsform.kode ? organization.organisasjonsform.kode : null;
+  document.getElementById('organizationAddress').value = getFullAddressFromOrganization(organization);
+
+
   clearOrganizationSearchResultsDropdown();
 }
 
@@ -69,7 +80,13 @@ const isFormattedAsOrganizationNumber = string => {
 }
 
 const searchResultsContainsItems = searchResults => {
-  return searchResults._embedded.enheter && searchResults._embedded && searchResults._embedded.enheter && searchResults._embedded.enheter.length;
+  return searchResults._embedded && searchResults._embedded.enheter && searchResults._embedded.enheter.length;
+}
+
+const handleOrganizationOnSearch = event => {
+  if (!event.target.value) { // On clear search click (X)
+    clearOrganizationSearchResultsDropdown();
+  }
 }
 
 const handleOrganizationSearchChange = searchString => {
