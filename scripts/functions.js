@@ -44,7 +44,6 @@ const hideDownloadDialog = () => {
 }
 
 const toggleExpand = (elementId, target) => {
-  console.log(target);
   const element = document.getElementById(elementId);
 
   if (target.classList.contains('active')){
