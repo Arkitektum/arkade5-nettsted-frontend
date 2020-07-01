@@ -1,5 +1,5 @@
 const postUserInfo = userInfo => {
-  const apiUrl = 'https://arkade.arkitektum.no/api/arkade-downloads';
+  const apiUrl = 'https://backend.arkade.arkitektum.no/api/arkade-downloads';
   try {
     return fetch(apiUrl, {
       method: 'POST',
