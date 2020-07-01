@@ -115,7 +115,7 @@ a {
 
 .appContainer {
   position: absolute;
-  height: calc(100% - var(--navbar-height));
+  /*height: calc(100% - var(--navbar-height));*/
   overflow-y: scroll;
   width: 100%;
 }
