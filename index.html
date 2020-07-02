@@ -42,14 +42,13 @@
       </form>
 
         <div class="buttonRow alignRight">
-          <button onclick="hideDownloadDialog()"><span>Avbryt</span></button>
-          <button onclick="handleDownloadDialogSubmit(postUserInfo)" disabled id="downloadDialogSubmit"><span>Last ned</span></button>
+          <button onclick="hideDownloadDialog()" id="downloadDialogCancel"><span>Avbryt</span></button>
+          <button onclick="handleDownloadDialogSubmit()" disabled id="downloadDialogSubmit"><span>Last ned</span></button>
         </div>
     </div>
   </div>
   <div class="appContainer">
     <header>
-
       <picture>
         <source srcset="assets/images/header_480.webp 480w,assets/images/header_800.webp 800w,assets/images/header_1260.webp 1260w,assets/images/header_1440.webp 1440w" type="image/webp">
         <source srcset="assets/images/header_480.jpg 480w,assets/images/header_800.jpg 800w,assets/images/header_1260.jpg 1260w,assets/images/header_1440.jpg 1440w" type="image/jpg">
@@ -110,7 +109,6 @@
   <script src="scripts/brregApiService.js"></script>
   <script src="scripts/functions.js"></script>
   <script src="scripts/init.js"></script>
-  <script src="scripts/internalApiService.js"></script>
 </body>
 
 </html>
