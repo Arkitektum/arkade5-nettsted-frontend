@@ -489,3 +489,9 @@ header .overlay .button span{
   background-color: var(--primary-color);
   color: #fff;
 }
+
+.flexContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
