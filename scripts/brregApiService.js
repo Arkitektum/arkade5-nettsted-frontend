@@ -18,6 +18,16 @@ const getOrganizationsByOrganizationNumber = organizationNumber => {
     });
 }
 
+const getOrganizationAddressCoordinates = organizationAddress => {
+  return fetch(`https://ws.geonorge.no/adresser/v1/sok?sok=${organizationAddress}`)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      return data.adresser[0].representasjonspunkt;
+    });
+}
+
 const clearOrganizationSearchResultsDropdown = () => {
   const containerElement = document.getElementById('organizationSearchResultsDropdown');
   containerElement.classList.remove('hasContent');
@@ -41,8 +51,15 @@ const selectOrganization = organization => {
   document.getElementById('organizationSearch').value = organization.navn;
   document.getElementById('organizationNumber').value = organization.organisasjonsnummer;
   document.getElementById('organizationType').value = organization.organisasjonsform && organization.organisasjonsform.kode ? organization.organisasjonsform.kode : null;
-  document.getElementById('organizationAddress').value = getFullAddressFromOrganization(organization);
 
+  var fullAddress = getFullAddressFromOrganization(organization);
+
+  document.getElementById('organizationAddress').value = fullAddress;
+
+  getOrganizationAddressCoordinates(fullAddress).then(organizationAddressCoordinates => {
+    document.getElementById('organizationLatitude').value = organizationAddressCoordinates.lat;
+    document.getElementById('organizationLongitude').value = organizationAddressCoordinates.lon;
+  }); // TODO: Use address parts from 'organization'
 
   clearOrganizationSearchResultsDropdown();
 }
