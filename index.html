@@ -9,11 +9,14 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,600,700&display=swap" rel="stylesheet">
   <link href="css/fontawesome.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
+  <link href="css/MarkerCluster.css" rel="stylesheet">
+  <link href="css/MarkerCluster.Default.css" rel="stylesheet">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#419488">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
   <meta name="msapplication-TileColor" content="#419488">
   <meta name="theme-color" content="#419488">
 </head>
@@ -57,6 +60,17 @@
         </div>
     </div>
   </div>
+
+  <div id="map-modal" class="modalOverlay">
+    <div class="modalContent mapModal">
+      <div class="modalHeading">
+        <span>Organisasjoner som har lastet ned Arkade 5</span>
+        <button type="button" onclick="hideMapModal()">&times;</button>
+      </div>
+      <div id="organization-map"></div>
+    </div>
+  </div>
+
   <div class="appContainer">
     <header>
       <picture>
@@ -97,6 +111,13 @@
         <div id="latestRelease" class="accordionList collapsed"></div>
         <h3 onclick="toggleExpand('previousReleases', this)" class="expandToggle">Versjonshistorikk</h3>
         <div id="previousReleases" class="accordionList collapsed"></div>
+        <div class="organization-info">
+          <h3><span id="organizationCount"></span> organisasjoner har lastet ned Arkade 5</h3>
+          <figure onclick="showMapModal()">
+            <img class="organization-map-image" src="organization-map.png" alt="organization-map">
+            <figcaption><a>Se på kart</a></figcaption>
+          </figure>
+        </div>
       </div>
     </div>
     <div class="dark-background">
@@ -120,6 +141,9 @@
   <script src="scripts/brregApiService.js"></script>
   <script src="scripts/functions.js"></script>
   <script src="scripts/init.js"></script>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+  <script src="scripts/leaflet.markercluster.js"></script>
+  <script src="scripts/organization-map.js"></script>
 </body>
 
 </html>

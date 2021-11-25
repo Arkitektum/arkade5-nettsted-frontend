@@ -70,6 +70,16 @@ const hideDownloadDialog = () => {
   modalElement.classList.remove("active");
 }
 
+const showMapModal = () => {
+  const modalElement = document.getElementById("map-modal");
+  modalElement.classList.add("active");
+}
+
+const hideMapModal = () => {
+  const modalElement = document.getElementById("map-modal");
+  modalElement.classList.remove("active");
+}
+
 const toggleExpand = (elementId, target) => {
   const element = document.getElementById(elementId);
 
