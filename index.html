@@ -47,6 +47,9 @@
         <label for="userEmail" class="required">E-post</label>
         <input id="userEmail" type="email" placeholder="navn@domene.no" onkeyup="validateForm()"/>
 
+        <label for="arkadeVersion">Arkade-versjon</label>
+        <select id="arkadeVersion" onchange="warnIfOldArkadeVersionIsSelected()"></select>
+
         <input id="userA1Xp" type="checkbox" />
         <label for="userA1Xp">Har erfaring fra Arkade versjon 1.x</label>
 
@@ -55,6 +58,7 @@
       </form>
 
         <div class="buttonRow alignRight">
+          <b id="download-info"></b>
           <button onclick="hideDownloadDialog()" id="downloadDialogCancel"><span>Avbryt</span></button>
           <button onclick="handleDownloadDialogSubmit()" disabled id="downloadDialogSubmit"><span>Last ned</span></button>
         </div>

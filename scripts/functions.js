@@ -58,9 +58,11 @@ const showDownloadDialog = applicationType => {
   applicationTypeInput.value = applicationType;
 
   downloadDialogSubmitButton.style.display = "inline-block";
-  downloadDialogSubmitButton.innerHTML = "<span>LAST NED</span>";
+  downloadDialogSubmitButton.innerHTML = "<span>LAST NED SISTE VERSJON</span>";
 
   downloadDialogCancelButton.style.innerHTML = "<span>AVBRYT</span>";
+
+  warnIfOldArkadeVersionIsSelected();
 
   validateForm();
 }
@@ -142,6 +144,7 @@ const postUserInfo = userInfo => {
 
 const handleDownloadDialogSubmit = () => {
   const arkadeUI = document.getElementById("downloadDialogApplicationType").value;
+  const arkadeVersion = document.getElementById("arkadeVersion").value;
   const downloaderEmail = document.getElementById("userEmail").value;
   const downloaderA1Xp = document.getElementById("userA1Xp").checked;
   const downloaderNews = document.getElementById("userNews").checked;
@@ -154,6 +157,7 @@ const handleDownloadDialogSubmit = () => {
 
   const postData = {
   	"arkadeUI": arkadeUI === "cli" ? "CLI" : "GUI",
+    arkadeVersion,
   	downloaderEmail,
   	"downloaderA1Xp": downloaderA1Xp ? "1" : "0",
   	"downloaderNews": downloaderNews ? "1" : "0",
@@ -165,4 +169,41 @@ const handleDownloadDialogSubmit = () => {
     orgLongitude
   };
   postUserInfo(postData)
+}
+
+const getArkadeVersionNumbers = () => {
+    const apiSubdomain = 'backend';
+    const apiHost = `${window.location.protocol}//${apiSubdomain}.${window.location.hostname}`;
+    const apiUrl = `${apiHost}/api/arkade-versions`;
+
+    return fetch(apiUrl)
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            return data;
+        });
+}
+
+getArkadeVersionNumbers().then(versionNumbers => {
+  const selectBox = document.getElementById('arkadeVersion');
+  versionNumbers.forEach(versionNumber => {
+    const option = document.createElement('option');
+    option.setAttribute('value', versionNumber);
+    option.innerText = versionNumber;
+    selectBox.append(option);
+  });
+});
+
+function warnIfOldArkadeVersionIsSelected() {
+  const selectBox = document.getElementById('arkadeVersion');
+  let downloadInfoElement = document.getElementById('download-info');
+  const downloadDialogSubmitButton = document.getElementById('downloadDialogSubmit');
+  if (selectBox.value !== selectBox.options[0].value) {
+    downloadInfoElement.innerText = "NB! En eldre Arkade-versjon er valgt.";
+    downloadDialogSubmitButton.innerHTML = "<span>Last ned</span>";
+  } else {
+    downloadInfoElement.innerText = '';
+    downloadDialogSubmitButton.innerHTML = "<span>Last ned siste versjon</span>";
+  }
 }
