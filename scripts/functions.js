@@ -154,6 +154,7 @@ const handleDownloadDialogSubmit = () => {
   const orgAddress = document.getElementById("organizationAddress").value;
   const orgLatitude = document.getElementById("organizationLatitude").value;
   const orgLongitude = document.getElementById("organizationLongitude").value;
+  const isAutomated = false;
 
   const postData = {
   	"arkadeUI": arkadeUI === "cli" ? "CLI" : "GUI",
@@ -166,7 +167,8 @@ const handleDownloadDialogSubmit = () => {
   	orgForm,
   	orgAddress,
     orgLatitude,
-    orgLongitude
+    orgLongitude,
+    isAutomated
   };
   postUserInfo(postData)
 }
