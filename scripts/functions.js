@@ -107,7 +107,7 @@ const handleDownloadStart = () => {
   downloadDialogSubmitButton.innerHTML = "<span>LASTER NED</span>";
 }
 
-const handleDownloadSuccess = () => {
+const handleDownloadFinished = () => {
   const downloadDialogSubmitButton = document.getElementById('downloadDialogSubmit');
   const downloadDialogCancelButton = document.getElementById('downloadDialogCancel');
 
@@ -120,24 +120,27 @@ const postUserInfo = userInfo => {
   const apiSubdomain = 'backend';
   const apiHost = `${window.location.protocol}//${apiSubdomain}.${window.location.hostname}`;
   const apiUrl = `${apiHost}/api/arkade-downloads`;
-  try {
-    return fetch(apiUrl, {
-      method: 'POST',
-      body: JSON.stringify(userInfo),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then(response => {
+  return fetch(apiUrl, {
+    method: 'POST',
+    body: JSON.stringify(userInfo),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then(response => {
+    if (response.ok) {
       handleDownloadStart();
       const filename = response.headers.get('Filename');
       response.blob().then(blob => {
-        handleDownloadSuccess();
         download(blob, filename);
+        handleDownloadFinished();
       });
-    })
-  } catch (error) {
-    console.error('Error:', error);
-  }
+    } else {
+      handleDownloadFinished();
+      console.error('Download error');
+      let downloadInfoElement = document.getElementById('download-info');
+      downloadInfoElement.innerText = 'Nedlasting mislyktes (' + response.statusText + ')';
+    }
+  })
 };
 
 
