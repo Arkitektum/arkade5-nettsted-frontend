@@ -149,7 +149,6 @@ const handleDownloadDialogSubmit = () => {
   const arkadeUI = document.getElementById("downloadDialogApplicationType").value;
   const arkadeVersion = document.getElementById("arkadeVersion").value;
   const downloaderEmail = document.getElementById("userEmail").value;
-  const downloaderA1Xp = document.getElementById("userA1Xp").checked;
   const downloaderNews = document.getElementById("userNews").checked;
   const orgName = document.getElementById("organizationName").value;
   const orgNumber = document.getElementById("organizationNumber").value;
@@ -163,7 +162,6 @@ const handleDownloadDialogSubmit = () => {
   	"arkadeUI": arkadeUI === "cli" ? "CLI" : "GUI",
     arkadeVersion,
   	downloaderEmail,
-  	"downloaderA1Xp": downloaderA1Xp ? "1" : "0",
   	"downloaderNews": downloaderNews ? "1" : "0",
     orgName,
   	orgNumber,
