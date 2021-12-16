@@ -128,7 +128,6 @@ const postUserInfo = userInfo => {
     }
   }).then(response => {
     if (response.ok) {
-      handleDownloadStart();
       const filename = response.headers.get('Filename');
       response.blob().then(blob => {
         download(blob, filename);
@@ -146,6 +145,9 @@ const postUserInfo = userInfo => {
 
 
 const handleDownloadDialogSubmit = () => {
+
+  handleDownloadStart();
+
   const arkadeUI = document.getElementById("downloadDialogApplicationType").value;
   const arkadeVersion = document.getElementById("arkadeVersion").value;
   const downloaderEmail = document.getElementById("userEmail").value;
