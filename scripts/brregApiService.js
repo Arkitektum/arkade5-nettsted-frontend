@@ -18,16 +18,6 @@ const getOrganizationsByOrganizationNumber = organizationNumber => {
     });
 }
 
-const getOrganizationAddressCoordinates = organizationAddress => {
-  return fetch(`https://ws.geonorge.no/adresser/v1/sok?sok=${organizationAddress}`)
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      return data.adresser[0].representasjonspunkt;
-    });
-}
-
 const clearOrganizationSearchResultsDropdown = () => {
   const containerElement = document.getElementById('organizationSearchResultsDropdown');
   containerElement.classList.remove('hasContent');
@@ -35,32 +25,12 @@ const clearOrganizationSearchResultsDropdown = () => {
 }
 
 const clearSelectedOrganization = () => {
-  document.getElementById('organizationName').value = "";
   document.getElementById('organizationNumber').value = "";
 }
 
-const getFullAddressFromOrganization = organization => {
-  const organizationAddress = organization.forretningsadresse && organization.forretningsadresse.adresse && organization.forretningsadresse.adresse[0] ? organization.forretningsadresse.adresse[0] : '';
-  const organizationZipCode = organization.forretningsadresse && organization.forretningsadresse.postnummer ? organization.forretningsadresse.postnummer : '';
-  const organizationPlace = organization.forretningsadresse && organization.forretningsadresse.poststed ? organization.forretningsadresse.poststed : '';
-  return `${organizationAddress} ${organizationZipCode} ${organizationPlace}`;
-}
-
 const selectOrganization = organization => {
-  document.getElementById('organizationName').value = organization.navn;
   document.getElementById('organizationSearch').value = organization.navn;
   document.getElementById('organizationNumber').value = organization.organisasjonsnummer;
-  document.getElementById('organizationType').value = organization.organisasjonsform && organization.organisasjonsform.kode ? organization.organisasjonsform.kode : null;
-
-  var fullAddress = getFullAddressFromOrganization(organization);
-
-  document.getElementById('organizationAddress').value = fullAddress;
-
-  getOrganizationAddressCoordinates(fullAddress).then(organizationAddressCoordinates => {
-    document.getElementById('organizationLatitude').value = organizationAddressCoordinates.lat;
-    document.getElementById('organizationLongitude').value = organizationAddressCoordinates.lon;
-  }); // TODO: Use address parts from 'organization'
-
   clearOrganizationSearchResultsDropdown();
 }
 

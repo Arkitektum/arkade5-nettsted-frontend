@@ -152,12 +152,7 @@ const handleDownloadDialogSubmit = () => {
   const arkadeVersion = document.getElementById("arkadeVersion").value;
   const downloaderEmail = document.getElementById("userEmail").value;
   const downloaderNews = document.getElementById("userNews").checked;
-  const orgName = document.getElementById("organizationName").value;
   const orgNumber = document.getElementById("organizationNumber").value;
-  const orgForm = document.getElementById("organizationType").value;
-  const orgAddress = document.getElementById("organizationAddress").value;
-  const orgLatitude = document.getElementById("organizationLatitude").value;
-  const orgLongitude = document.getElementById("organizationLongitude").value;
   const isAutomated = false;
 
   const postData = {
@@ -165,12 +160,7 @@ const handleDownloadDialogSubmit = () => {
     arkadeVersion,
   	downloaderEmail,
   	"downloaderNews": downloaderNews ? "1" : "0",
-    orgName,
   	orgNumber,
-  	orgForm,
-  	orgAddress,
-    orgLatitude,
-    orgLongitude,
     isAutomated
   };
   postUserInfo(postData)
