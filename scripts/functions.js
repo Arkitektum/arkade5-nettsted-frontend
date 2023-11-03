@@ -52,15 +52,16 @@ const showDownloadDialog = applicationType => {
   const modalElement = document.getElementById("downloadDialog");
   const applicationTypeInput = document.getElementById("downloadDialogApplicationType");
   const downloadDialogSubmitButton = document.getElementById('downloadDialogSubmit');
-  const downloadDialogCancelButton = document.getElementById('downloadDialogCancel');
+  const downloadDialogSubmitButtonText = document.getElementById('downloadDialogSubmitButtonText');
+  const downloadDialogCancelButtonText = document.getElementById('downloadDialogCancelButtonText');
 
   modalElement.classList.add("active");
   applicationTypeInput.value = applicationType;
 
   downloadDialogSubmitButton.style.display = "inline-block";
-  downloadDialogSubmitButton.innerHTML = "<span>LAST NED SISTE VERSJON</span>";
+  downloadDialogSubmitButtonText.innerText = "LAST NED SISTE VERSJON";
 
-  downloadDialogCancelButton.style.innerHTML = "<span>AVBRYT</span>";
+  downloadDialogCancelButtonText.style.innerText = "AVBRYT";
 
   warnIfOldArkadeVersionIsSelected();
 
@@ -103,17 +104,22 @@ const validateEmailField = email => {
 
 const handleDownloadStart = () => {
   const downloadDialogSubmitButton = document.getElementById('downloadDialogSubmit');
+  const downloadDialogSubmitButtonText = document.getElementById('downloadDialogSubmitButtonText');
+  const downloadDialogSubmitProgressBar = document.getElementById('downloadDialogSubmitProgressBar');
+
   downloadDialogSubmitButton.disabled = true;
-  downloadDialogSubmitButton.innerHTML = "<span>LASTER NED</span>";
+  downloadDialogSubmitButtonText.innerText = "LASTER NED";
+  downloadDialogSubmitProgressBar.style.display = "block";
 }
 
 const handleDownloadFinished = () => {
   const downloadDialogSubmitButton = document.getElementById('downloadDialogSubmit');
-  const downloadDialogCancelButton = document.getElementById('downloadDialogCancel');
+  const downloadDialogCancelButtonText = document.getElementById('downloadDialogCancelButtonText');
+  const downloadDialogSubmitProgressBar = document.getElementById('downloadDialogSubmitProgressBar');
 
   downloadDialogSubmitButton.style.display = "none";
-  downloadDialogCancelButton.innerHTML = "<span>LUKK</span>";
-
+  downloadDialogCancelButtonText.innerText = "LUKK";
+  downloadDialogSubmitProgressBar.style.display = "none";
 }
 
 const postUserInfo = userInfo => {
@@ -199,11 +205,12 @@ function warnIfOldArkadeVersionIsSelected() {
   const selectBox = document.getElementById('arkadeVersion');
   let downloadInfoElement = document.getElementById('download-info');
   const downloadDialogSubmitButton = document.getElementById('downloadDialogSubmit');
+  const downloadDialogSubmitButtonText = document.getElementById('downloadDialogSubmitButtonText');
   if (selectBox.value !== selectBox.options[0].value) {
     downloadInfoElement.innerText = "NB! En eldre Arkade-versjon er valgt.";
-    downloadDialogSubmitButton.innerHTML = "<span>Last ned</span>";
+    downloadDialogSubmitButtonText.innerText = "Last ned";
   } else {
     downloadInfoElement.innerText = '';
-    downloadDialogSubmitButton.innerHTML = "<span>Last ned siste versjon</span>";
+    downloadDialogSubmitButtonText.innerText = "Last ned siste versjon";
   }
 }

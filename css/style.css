@@ -1,6 +1,7 @@
 :root {
   --main-background-color: #f4f4f4;
   --main-text-color: #333435;
+  --main-text-color-disabled: #636465;
   --navigation-bar-background-color: #000;
   --navigation-bar-text-color: #fff;
   --primary-color: #419488;
@@ -176,10 +177,10 @@ button:disabled,
 button.disabled,
 .button:disabled,
 .button.disabled {
-  opacity: .5;
-  border-color: #ccc;
-  background-color: #ddd;
-  color: var(--main-text-color);
+  background-color: #eee;
+  color: var(--main-text-color-disabled);
+  cursor: not-allowed;
+  border-color: #777;
 }
 
 button:disabled:hover span,
@@ -200,6 +201,7 @@ button span,
   font-size: 16px;
   min-width: 64px;
   display: block;
+  position: relative;
 }
 
 button:hover span,
