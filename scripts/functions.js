@@ -142,14 +142,16 @@ const postUserInfo = userInfo => {
     } else {
       handleDownloadFinished();
       console.error('Download error');
-      let downloadInfoElement = document.getElementById('download-info');
-      downloadInfoElement.innerText = 'Nedlasting mislyktes (' + response.statusText + ')';
+      const downloadInfoElement = document.getElementById('download-info');
+      const downloadInfoText = response?.statusText?.length ? `Nedlasting mislyktes (${response.statusText})` : "Nedlasting mislyktes";
+      downloadInfoElement.innerText = downloadInfoText;
     }
   }).catch(error => {
     handleDownloadFinished();
     console.error('Download error');
-    let downloadInfoElement = document.getElementById('download-info');
-    downloadInfoElement.innerText = 'Nedlasting mislyktes (' + error.message + ')';
+    const downloadInfoElement = document.getElementById('download-info');
+    const downloadInfoText = error?.message?.length ? `Nedlasting mislyktes (${error.message})` : "Nedlasting mislyktes";
+    downloadInfoElement.innerText = downloadInfoText;
   })
 };
 
