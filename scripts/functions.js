@@ -204,7 +204,6 @@ getArkadeVersionNumbers().then(versionNumbers => {
 function warnIfOldArkadeVersionIsSelected() {
   const selectBox = document.getElementById('arkadeVersion');
   let downloadInfoElement = document.getElementById('download-info');
-  const downloadDialogSubmitButton = document.getElementById('downloadDialogSubmit');
   const downloadDialogSubmitButtonText = document.getElementById('downloadDialogSubmitButtonText');
   if (selectBox.value !== selectBox.options[0].value) {
     downloadInfoElement.innerText = "NB! En eldre Arkade-versjon er valgt.";
@@ -213,4 +212,11 @@ function warnIfOldArkadeVersionIsSelected() {
     downloadInfoElement.innerText = '';
     downloadDialogSubmitButtonText.innerText = "Last ned siste versjon";
   }
+}
+
+function handleArkadeVersionSelect() {
+  const downloadDialogSubmitButton = document.getElementById('downloadDialogSubmit');
+  downloadDialogSubmitButton.style.display = 'inline-block';
+  validateForm();
+  warnIfOldArkadeVersionIsSelected();
 }
