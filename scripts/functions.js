@@ -139,6 +139,11 @@ const postUserInfo = userInfo => {
       let downloadInfoElement = document.getElementById('download-info');
       downloadInfoElement.innerText = 'Nedlasting mislyktes (' + response.statusText + ')';
     }
+  }).catch(error => {
+    handleDownloadFinished();
+    console.error('Download error');
+    let downloadInfoElement = document.getElementById('download-info');
+    downloadInfoElement.innerText = 'Nedlasting mislyktes (' + error.message + ')';
   })
 };
 
