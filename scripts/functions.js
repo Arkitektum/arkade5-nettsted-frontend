@@ -182,7 +182,7 @@ const handleDownloadDialogSubmit = () => {
 const getArkadeVersionNumbers = () => {
     const apiSubdomain = 'backend';
     const apiHost = `${window.location.protocol}//${apiSubdomain}.${window.location.hostname}`;
-    const apiUrl = `${apiHost}/api/arkade-versions`;
+    const apiUrl = `${apiHost}/api/arkade-versions?limit=2`;
 
     return fetch(apiUrl)
         .then((response) => {
