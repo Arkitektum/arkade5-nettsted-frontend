@@ -544,3 +544,24 @@ header .overlay .button span{
   padding: 5px;
   font-size: .9em;
 }
+
+.news-banner {
+  padding: 16px;
+  text-align: center;
+  background-color: papayawhip;
+}
+
+.news-banner a{
+  padding: 4px 6px;
+  text-align: center;
+  background-color: #f4f4f4;
+  border: 1px solid #b4b4b4;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-left: 10px;
+  white-space: nowrap;
+}
+
+.news-banner a:hover {
+ background-color: #e4e4e4;
+}
