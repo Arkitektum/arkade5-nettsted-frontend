@@ -1,6 +1,6 @@
 const organizationMap = L.map('organization-map').setView([65.5, 16], 5);
 
-L.tileLayer('https://opencache.statkart.no/gatekeeper/gk/gk.open_gmaps?layers=topo4&zoom={z}&x={x}&y={y}', {
+L.tileLayer('https://cache.kartverket.no/v1/wmts/1.0.0/topo/default/webmercator/{z}/{y}/{x}.png', {
     attribution: 'Bakgrunnnskart og posisjonsdata fra © <a href="https://kartverket.no/" target="_blank">Kartverket</a>',
 }).addTo(organizationMap);
 
